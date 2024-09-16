@@ -1,35 +1,82 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import './App.css';
+
+const albumsData = [
+  {
+    title: "Alone",
+    image: "/images/Alone.jpeg", 
+    tracks: [
+      "Alone",
+      "Sweet Agnes",
+      "Oh! Tengo Suerte"
+    ],
+  },
+  {
+    title: "Takanaka",
+    image: "/images/Takanaka.jpeg",
+    tracks: [
+      "Blue Lagoon",
+      "Ready To Fly",
+      "Penguin Dancer"
+    ],
+  },
+  {
+    title: "Brazilian Skies",
+    image: "/images/Brasilian_Skies.jpeg",
+    tracks: [
+      "Brasilian Skies",
+      "Traffic Jam",
+      "Star Wars Samba"
+    ],
+  },
+  {
+    title: "Natsu Zen Kai",
+    image: "/images/Natsu_Zen_Kai.jpeg",
+    tracks: [
+      "Midnight Lover",
+      "Malibu",
+      "Summer Breeze"
+    ],
+  }
+];
+
+const Discography = () => {
+  return (
+    <div className="container">
+      <div className="artist-info">
+        <h1>Masayoshi Takanaka</h1>
+        <img
+          src="/images/Takanaka Red Suit.jpeg"
+          alt="Masayoshi Takanaka"
+          className="artist-image"
+        />
+      </div>
+      <div className="albums-section">
+        <h2>Masayoshi Takanaka's albums</h2>
+        <div className="albums">
+          {albumsData.map((album, index) => (
+            <details key={index} className="album">
+              <summary>{album.title} <span>+</span></summary>
+              <img src={album.image} alt={album.title} className="album-cover"/>
+              <ul>
+                {album.tracks.map((track, i) => (
+                  <li key={i}>{track}</li>
+                ))}
+              </ul>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="App">
+      <Discography />
+    </div>
+  );
 }
 
-export default App
+export default App;
