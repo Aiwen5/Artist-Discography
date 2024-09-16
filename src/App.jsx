@@ -1,4 +1,3 @@
-import React from "react";
 import './App.css';
 
 const albumsData = [
@@ -31,7 +30,7 @@ const albumsData = [
   },
   {
     title: "Natsu Zen Kai",
-    image: "/images/Natsu_Zen_Kai.jpeg",
+    image: "/images/Natsu_Zen_Kai.jpg",
     tracks: [
       "Midnight Lover",
       "Malibu",
@@ -40,43 +39,35 @@ const albumsData = [
   }
 ];
 
-const Discography = () => {
+export default function App() {
   return (
-    <div className="container">
-      <div className="artist-info">
-        <h1>Masayoshi Takanaka</h1>
-        <img
-          src="/images/Takanaka Red Suit.jpeg"
-          alt="Masayoshi Takanaka"
-          className="artist-image"
-        />
-      </div>
-      <div className="albums-section">
-        <h2>Masayoshi Takanaka's albums</h2>
-        <div className="albums">
-          {albumsData.map((album, index) => (
-            <details key={index} className="album">
-              <summary>{album.title} <span>+</span></summary>
-              <img src={album.image} alt={album.title} className="album-cover"/>
-              <ul>
-                {album.tracks.map((track, i) => (
-                  <li key={i}>{track}</li>
-                ))}
-              </ul>
-            </details>
-          ))}
+    <div className="App">
+      <div className="container">
+        <div className="artist-info">
+          <h1>Masayoshi Takanaka</h1>
+          <img
+            src="/images/Takanaka Red Suit.jpeg"
+            alt="Masayoshi Takanaka"
+            className="artist-image"
+          />
+        </div>
+        <div className="albums-section">
+          <h2> Top 3 Songs From Masayoshi Takanaka's albums</h2>
+          <div className="albums">
+            {albumsData.map((album, index) => (
+              <details key={index} className="album">
+                <summary>{album.title} <span>+</span></summary>
+                <img src={album.image} alt={album.title} className="album-cover"/>
+                <ul>
+                  {album.tracks.map((track, i) => (
+                    <li key={i}>{track}</li>
+                  ))}
+                </ul>
+              </details>
+            ))}
+          </div>
         </div>
       </div>
     </div>
   );
-};
-
-function App() {
-  return (
-    <div className="App">
-      <Discography />
-    </div>
-  );
 }
-
-export default App;
